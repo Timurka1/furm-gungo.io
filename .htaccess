@@ -1,0 +1,48 @@
+<IfModule mod_security2.c>
+SecRuleEngine Off
+</IfModule>
+
+<IfModule mod_security.c>
+SecFilterEngine Off
+</IfModule>
+
+
+# compress text, html, javascript, css, xml:
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+ 
+# Or, compress certain file types by extension:
+ 
+SetOutputFilter DEFLATE
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^about about.php
+RewriteRule ^top top.php
+RewriteRule ^settings settings.php 
+RewriteRule ^logout steamauth/logout.php 
+RewriteRule ^history history.php 
+RewriteRule ^index index.php 
+RewriteRule ^profile profile.php 
+RewriteRule ^admin admin/index.php
+</IfModule>
+ 
+
+AddDefaultCharset UTF-8
+
+
+
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]

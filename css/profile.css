@@ -1,0 +1,22 @@
+.history_game {
+
+    height: 100%;
+
+}
+.history_game h2, .content h2 {
+    text-align: center;
+    color: #ffad08;
+    font: 500 30px/30px 'Roboto', sans-serif;
+    padding: 12px 0 8px;
+    margin: 0;
+}.history_game > ul {
+    margin: 0;
+    padding: 19px 26px 11px 23px;
+    list-style: none;
+}.history_game h2, .content h2 {
+    text-align: center;
+    color: #ffad08;
+    font: 500 30px/30px 'Roboto', sans-serif;
+    padding: 12px 0 8px;
+    margin: 0;
+}
